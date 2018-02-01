@@ -1,4 +1,4 @@
-from union_find import QUnion
+from quick_union import QUnion
 
 def xyto1d(x,y):
         index=N*x+y+1
@@ -73,30 +73,32 @@ class Percolation:
         def out(self):
                 print(self.numberofOpenSites())
                 print(self.percolates())
+                print('')
                 for i in range(N):
                         for j in range(N):
                                 index=N*i+j
-                                print(self.status[index]),
+                                print(self.status[index],end=' '),
                         print("")
                 print(self.grid.uid)
                 
 def main():
+        N=int(input("Enter Grid length: "))
         p=Percolation(N)
         while True:
                 while True:
-                        row=input("Row:")
-                        col=input("Coloumn: ")
+                        row=int(input("Row:"))
+                        col=int(input("Coloumn: "))
                         if p.isOpen(row,col)==0:
                                 p.Open(row,col)
                         else:
                                 print("Site already opened.")
-                        i=input("Open more sites(0/1): ")
+                        i=int(input("Open more sites(0/1): "))
                         if i==0:
                                 break     
                 p.out()
-                i=input("Open more sites(0/1): ")
+                i=int(input("\nOpen more sites(0/1): "))
                 if i==0:
                         break
 
-#N=input("Enter Grid length: ")
-#main()
+if __name__ == '__main__':
+    main()

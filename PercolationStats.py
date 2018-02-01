@@ -45,19 +45,20 @@ class PercolationStats:
         def confidenceHi(self):                            #     high endpoint of 95% confidence interval
                 return self.mean()+(1.96*self.stddev()/self.numTrials**0.5)
 
+def main():
+    N=int(input("Enter Grid Length: "))
+    T=int(input("Enter Number of Trials: "))
+    begt=time.time()
+    test=PercolationStats(N,T)
+    print("mean = "+str(test.mean()))
+    print("stddev = "+str(test.stddev()))
+    print("95% confidence interval = "+str(test.confidenceLo())+" , "+ str(test.confidenceHi()))
+    endt=time.time()
+    print("Total Time Elapsed: ")
+    print(endt-begt)
 
-N=input("Enter Grid Length: ")
-T=input("Enter Number of Trials: ")
-begt=time.time()
-test=PercolationStats(N,T)
-print("mean = "+str(test.mean()))
-print("stddev = "+str(test.stddev()))
-print("95% confidence interval = "+str(test.confidenceLo())+" , "+ str(test.confidenceHi()))
-endt=time.time()
-print("Total Time Elapsed: ")
-print(endt-begt)
-
-
+if __name__ == '__main__':
+    main()
 
 
 
